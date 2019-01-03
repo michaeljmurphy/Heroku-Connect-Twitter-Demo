@@ -18,7 +18,7 @@ pg.connect(process.env.HEROKU_POSTGRESQL_BRONZE_URL+'?ssl=true', function(err, c
     
 
     console.log('Querying tags');
-    client.query('SELECT tag'+
+    client.query('SELECT tag '+
                  'FROM public.hashtag ', function(err, result) {
                      if (err) { 
                          console.error(err);
