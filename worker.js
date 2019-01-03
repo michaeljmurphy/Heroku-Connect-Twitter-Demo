@@ -8,12 +8,16 @@ var tw = new Twitter({
     access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET,
 });
 
+console.log("Connecting to pg");
+
 pg.connect(process.env.DATABASE_URL+'?ssl=true', function(err, client, done) {
     if (err) {
         console.error(err);
         process.exit(1);
     }
+    
 
+    console.log('Querying tags');
     client.query('SELECT tag'+
                  'FROM public.hashtag ', function(err, result) {
                      if (err) { 
