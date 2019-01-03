@@ -8,7 +8,7 @@ var tw = new Twitter({
     access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET,
 });
 
-console.log("Connecting to pg");
+console.log("Connecting to pg", process.env.DATABASE_URL);
 
 pg.connect(process.env.DATABASE_URL+'?ssl=true', function(err, client, done) {
     if (err) {
