@@ -54,6 +54,7 @@ pg.connect(process.env.HEROKU_POSTGRESQL_BRONZE_URL+'?ssl=true', function(err, c
                                                               'FROM public.hashtag ', function(err, result) {
                                                                   hashtags = result.rows;
                                                               });
+                                             }
                                          });
                                      }
                                  });
