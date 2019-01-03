@@ -50,7 +50,10 @@ pg.connect(process.env.HEROKU_POSTGRESQL_BRONZE_URL+'?ssl=true', function(err, c
                                                  console.error(err);
                                              } else {
                                                  console.log('Inserted: ', tweet.id_str);
-                                             }
+                                                 client.query('SELECT tag '+
+                                                              'FROM public.hashtag ', function(err, result) {
+                                                                  hashtags = result.rows;
+                                                              });
                                          });
                                      }
                                  });
