@@ -32,6 +32,8 @@ pg.connect(process.env.HEROKU_POSTGRESQL_BRONZE_URL+'?ssl=true', function(err, c
                          console.log('hashtags: ', hashtags);
 
                          tw.stream('statuses/filter', {track: query}, function(stream) {
+                             console.log('In tw stream: ', stream);
+                             
                              stream.on('data', function(tweet) {
                                  console.log('Tweet: ',tweet);
 
