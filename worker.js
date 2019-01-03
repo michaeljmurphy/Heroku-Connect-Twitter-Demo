@@ -8,9 +8,9 @@ var tw = new Twitter({
     access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET,
 });
 
-console.log("Connecting to pg", process.env.DATABASE_URL);
+console.log("Connecting to pg", process.env.HEROKU_POSTGRESQL_BRONZE_URL);
 
-pg.connect(process.env.DATABASE_URL+'?ssl=true', function(err, client, done) {
+pg.connect(process.env.HEROKU_POSTGRESQL_BRONZE_URL+'?ssl=true', function(err, client, done) {
     if (err) {
         console.error(err);
         process.exit(1);
