@@ -45,7 +45,7 @@ pg.connect(process.env.HEROKU_POSTGRESQL_BRONZE_URL+'?ssl=true', function(err, c
                                          var insert = 'INSERT INTO public.tweet(screen_name, hashtag, text) '+
                                              'VALUES($1, $2, $3)';
                                          
-                                         client.query(insert, [tweet.id_str, hashtag, tweet.text], function(err, result) {
+                                         client.query(insert, [tweet.id_str, hashtag.tag, tweet.text], function(err, result) {
                                              if(err) {
                                                  console.error(err);
                                              } else {
