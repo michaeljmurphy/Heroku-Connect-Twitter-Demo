@@ -51,7 +51,7 @@ pg.connect(process.env.HEROKU_POSTGRESQL_BRONZE_URL+'?ssl=true', function(err, c
                                              } else {
                                                  console.log('Inserted: ', tweet.id_str);
                                                  client.query('SELECT tag '+
-                                                              'FROM public.hashtag ', function(err, result) {
+                                                              'FROM public.hashtag where tracked = true', function(err, result) {
                                                                   hashtags = result.rows;
                                                               });
                                                  console.log('updated hashtags: ', hashtags);
