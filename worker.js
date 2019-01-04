@@ -19,7 +19,7 @@ pg.connect(process.env.HEROKU_POSTGRESQL_BRONZE_URL+'?ssl=true', function(err, c
 
     console.log('Querying tags');
     client.query('SELECT tag '+
-                 'FROM public.hashtag ', function(err, result) {
+                 'FROM public.hashtag WHERE tracked = true', function(err, result) {
                      if (err) { 
                          console.error(err);
                      } else {
@@ -54,6 +54,7 @@ pg.connect(process.env.HEROKU_POSTGRESQL_BRONZE_URL+'?ssl=true', function(err, c
                                                               'FROM public.hashtag ', function(err, result) {
                                                                   hashtags = result.rows;
                                                               });
+                                                 console.log('updated hashtags: ', hashtags);
                                              }
                                          });
                                      }
